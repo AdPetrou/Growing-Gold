@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae66dc50ce1eb62428c9a105ff41868e, type: 3}
+  m_Name: Watering Can
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 8841330231677358214, guid: 5f6c50a3c6ec4fa469311cb56ff8b8b6, type: 3}
+  _anim: {fileID: -7681441007365279422, guid: d7ff9c18d43932f4eab2f0e651a764af, type: 3}
+  _name: Watering Can
+  _time: 2
+  _cost: 100
+  _sprite: {fileID: 21300000, guid: 25882f9d08d96774b8ebd5cc722c65b4, type: 3}
+  _playerRequired: 1
+  _plantGrown: 0
+  _panel: {fileID: 11400000, guid: 40fe80cacf68ceb41a76e60fb5c26021, type: 2}
+  _renderTexture: {fileID: 8400000, guid: 1d58fbffabe2e6f4db265bc07cff5b84, type: 2}
+  _progressBar: {fileID: 9197481963319205126, guid: 1649ae665425b2f4a9453ddc7a1f1207,
+    type: 3}
+  _useAnim: {fileID: -4620196326707415867, guid: d7ff9c18d43932f4eab2f0e651a764af,
+    type: 3}
+  _efficieny: 1

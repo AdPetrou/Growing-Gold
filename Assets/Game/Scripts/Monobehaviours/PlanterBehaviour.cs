@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Plants 
+namespace Game.Forms.Plants 
 {
     public class PlanterBehaviour : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace Game.Plants
 
             PlantType = _plantType;
             Vector3 pos = transform.position;
-            Plant = PlantType.CreatePlant(transform, new Vector3(pos.x, pos.y + 0.6f, pos.z));
+            Plant = PlantType.CreateObject(transform, new Vector3(pos.x, pos.y + 0.6f, pos.z));
         }
 
         public void RemovePlant()

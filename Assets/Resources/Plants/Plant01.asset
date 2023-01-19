@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Plant01
   m_EditorClassIdentifier: 
   _prefab: {fileID: 563943654557280760, guid: 7ddf8d26e70ce034f8af668f6ea9d3f8, type: 3}
-  _growthAnim: {fileID: 7448036848041858844, guid: 00064a1331527974e8ae5599ca273a81,
-    type: 3}
-  _plantName: Space Plant
-  _timeToGrow: 1
-  _value: 50
+  _anim: {fileID: 7448036848041858844, guid: 00064a1331527974e8ae5599ca273a81, type: 3}
+  _name: Space Plant
+  _time: 4
   _cost: 2000
+  _value: 50
