@@ -37,6 +37,15 @@ namespace Game
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shop"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e2337c9-142d-4f69-9ac3-0d492c9ad73b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -61,6 +70,17 @@ namespace Game
                     ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3842ff4-631d-4449-871d-4b34e1d1d1c0"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -70,6 +90,7 @@ namespace Game
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
+            m_Player_Shop = m_Player.FindAction("Shop", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -130,11 +151,13 @@ namespace Game
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Use;
+        private readonly InputAction m_Player_Shop;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
             public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Use => m_Wrapper.m_Player_Use;
+            public InputAction @Shop => m_Wrapper.m_Player_Shop;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -147,6 +170,9 @@ namespace Game
                     @Use.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                     @Use.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                     @Use.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
+                    @Shop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShop;
+                    @Shop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShop;
+                    @Shop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShop;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -154,6 +180,9 @@ namespace Game
                     @Use.started += instance.OnUse;
                     @Use.performed += instance.OnUse;
                     @Use.canceled += instance.OnUse;
+                    @Shop.started += instance.OnShop;
+                    @Shop.performed += instance.OnShop;
+                    @Shop.canceled += instance.OnShop;
                 }
             }
         }
@@ -161,6 +190,7 @@ namespace Game
         public interface IPlayerActions
         {
             void OnUse(InputAction.CallbackContext context);
+            void OnShop(InputAction.CallbackContext context);
         }
     }
 }

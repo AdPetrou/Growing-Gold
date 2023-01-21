@@ -1,11 +1,9 @@
 using Game.Forms.Tools;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Game
+namespace Game.Forms.UI
 {
     internal struct Slot
     {
@@ -29,13 +27,31 @@ namespace Game
             _slot.style.position = Position.Absolute;
             _parent.Add(_slot);
 
-            _neutralColour = _slot.style.backgroundColor; 
+            _neutralColour = _slot.style.backgroundColor;
             _selectedColour = _slot.style.backgroundColor;
             _selectedColour.value += Color.blue;
             var _slotSprite = _slot.Q("Sprite");
             _slotSprite.style.backgroundImage = new StyleBackground(Tool.Sprite);
 
             SlotElement.RegisterCallback<ClickEvent>(OnSelect);
+        }
+
+        public void ReplaceTool(ToolScriptable _tool)
+        {
+            if(_hotbar.ActiveSlot.Equals(this))
+                OnDeselect();
+
+            this._tool = _tool;
+            SetBackground();
+        }
+
+        private void SetBackground()
+        {
+            _neutralColour = _slot.style.backgroundColor;
+            _selectedColour = _slot.style.backgroundColor;
+            _selectedColour.value += Color.blue;
+            var _slotSprite = _slot.Q("Sprite");
+            _slotSprite.style.backgroundImage = new StyleBackground(Tool.Sprite);
         }
 
         public void OnSelect(ClickEvent evt)
@@ -54,12 +70,25 @@ namespace Game
         }
     }
 
-    public class Hotbar
+    public class Hotbar : ResizableUI
     {
-        private List<Slot> _slots;
-        private VisualElement _bar;
+        private List<Slot> _slots; 
         private VisualTreeAsset _slotTree;
         private Slot _activeSlot;
+
+        internal Slot ActiveSlot { get { return _activeSlot; } }
+
+        public List<System.Type> ToolTypeList
+        {
+            get
+            {
+                var _return = new List<System.Type>();
+                foreach (var _slot in _slots)
+                    _return.Add(_slot.Tool.GetType());
+
+                return _return;
+            }
+        }
 
         public Hotbar(GameObject _hotbar, VisualTreeAsset _slotTree,
             PanelSettings _panel, int _slotAmount)
@@ -70,13 +99,13 @@ namespace Game
             if (!_uiDocument)
                 _uiDocument = _hotbar.AddComponent<UIDocument>();
 
-            _bar = new VisualElement(); _slots = new List<Slot>();
-            _uiDocument.rootVisualElement.Add(_bar);
+            _root = new VisualElement(); _slots = new List<Slot>();
+            _uiDocument.rootVisualElement.Add(_root);
             _uiDocument.panelSettings = _panel;
 
-            _bar.style.justifyContent = Justify.FlexStart;
-            _bar.style.alignContent = Align.FlexStart;
-            _bar.style.flexDirection = FlexDirection.Row;
+            _root.style.justifyContent = Justify.FlexStart;
+            _root.style.alignContent = Align.FlexStart;
+            _root.style.flexDirection = FlexDirection.Row;
         }
 
         internal bool SetActiveSlot(Slot _slot)
@@ -91,21 +120,7 @@ namespace Game
             return true;
         }
 
-        public void OnPostVisualCreation()
-        {
-            // Make invisble so you don't see the size re-adjustment
-            // (Non-visible objects still go through transforms in the layout engine)
-            _bar.visible = false;
-            _bar.schedule.Execute(WaitOneFrame);
-        }
-
-        private void WaitOneFrame(TimerState obj)
-        {
-            // Because waiting once wasn't working
-            _bar.schedule.Execute(AutoSize);
-        }
-
-        private void AutoSize(TimerState obj)
+        protected override void AutoSize(TimerState obj)
         {
             // Do any measurements, size adjustments you need (NaNs not an issue now)
             float _scale = Screen.width * 0.05f;
@@ -118,20 +133,23 @@ namespace Game
                     new Vector2(_scale * i, 0);
             }
 
-            _bar.style.height = _scale;
-            _bar.style.width = _scale * _slots.Count;
-            _bar.transform.position = new Vector2(Screen.width / 2
+            _root.style.height = _scale;
+            _root.style.width = _scale * _slots.Count;
+            _root.transform.position = new Vector2(Screen.width / 2
                 - (_scale * _slots.Count / 2), Screen.height - _scale);
 
-
-            _bar.MarkDirtyRepaint();
-            _bar.visible = true;
+            base.AutoSize(obj);
         }
 
         public void AddToSlot(ToolScriptable _tool)
         {
-            _slots.Add(new Slot(_tool, _slotTree, _bar, this));
+            _slots.Add(new Slot(_tool, _slotTree, _root, this));
             OnPostVisualCreation();
+        }
+
+        public void ReplaceTool(ToolScriptable _tool, int _index)
+        {
+            _slots[_index].ReplaceTool(_tool);
         }
     }
 }

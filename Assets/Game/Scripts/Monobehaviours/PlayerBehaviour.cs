@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Forms.Plants;
 using Game.Forms.Tools;
-using static UnityEngine.GraphicsBuffer;
+using Game.Forms.UI;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
 
@@ -41,9 +41,6 @@ namespace Game
 
             _hotbar = new Hotbar(_hotbarPrefab, _slotTree, 
                 _panel, _hotbarSlots);
-
-            _hotbar.AddToSlot(_wateringTool);
-            _hotbar.AddToSlot(_farmingTool);
         }
 
         // Update is called once per frame
@@ -94,6 +91,16 @@ namespace Game
 
         public void SetActiveTool(ToolScriptable _tool) { _activeTool = _tool; }
         public void RemoveActiveTool() { _activeTool = null; }
+
+        public void EquipTool(ToolScriptable _tool)
+        {
+            if (_hotbar.ToolTypeList.Contains(_tool.GetType()))
+            {
+                _hotbar.ReplaceTool(_tool, _hotbar.ToolTypeList.IndexOf(_tool.GetType()));
+                return;
+            }
+            _hotbar.AddToSlot(_tool);
+        }
 
         private GameObject SpherecastFromMouse()
         {

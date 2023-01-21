@@ -9,7 +9,6 @@ namespace Game.Forms.Tools
 {
     public abstract class ToolScriptable : GenericScriptable
     {
-        [SerializeField] protected bool _playerRequired;
         [SerializeField] protected bool _requiresPlantGrown;
         [SerializeField] protected PanelSettings _panel;
         [SerializeField] protected RenderTexture _renderTexture;
@@ -17,7 +16,6 @@ namespace Game.Forms.Tools
         [SerializeField] protected AnimationClip _useAnim;
 
         public bool RequiresPlantGrown { get { return _requiresPlantGrown; } }
-        public bool PlayerRequired { get { return _playerRequired; } }
 
         public override bool UseObject(GameObject _target, float _offset)
         {

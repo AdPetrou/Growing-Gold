@@ -7,8 +7,10 @@ using UnityEngine;
 namespace Game.Forms.Tools 
 {
     [CreateAssetMenu(fileName = "Plant Type", menuName = "Scriptables/Tools/Harvesting")]
-    public class HarvestingScriptable : ToolScriptable
+    public class HarvestingScriptable : ToolScriptable, IShopItem
     {
+        public ShopItemType ShopItemType { get { return ShopItemType.Persistant; } }
+
         public override bool UseObject(GameObject _target, float _yOffset)
         {
             if (!base.UseObject(_target, _yOffset))
@@ -33,6 +35,11 @@ namespace Game.Forms.Tools
                 })
             );
             return true;
+        }
+
+        public void OnButtonPress()
+        {
+            GameManager.Instance.Player.EquipTool(this);
         }
     }
 }
