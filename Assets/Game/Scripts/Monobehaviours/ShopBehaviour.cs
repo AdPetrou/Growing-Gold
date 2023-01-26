@@ -64,7 +64,7 @@ namespace Game.Forms.UI.Shop
                 Array.Sort(_shopArray.ToArray(), delegate (GenericScriptable x, GenericScriptable y)
                 { return x.Cost.CompareTo(y.Cost); });
 
-                return _shopArray.ToList();
+                return _shopArray;
             }
         }
 

@@ -970,6 +970,7 @@ MonoBehaviour:
   _applicableTypes:
   - Irrigation Scriptable
   - Harvesting Scriptable
+  - Wallet Scriptable
 --- !u!1 &1585133180
 GameObject:
   m_ObjectHideFlags: 0

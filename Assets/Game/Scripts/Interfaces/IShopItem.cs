@@ -7,10 +7,8 @@ namespace Game.Forms
 {
     public interface IShopItem
     {
-        public ShopItemType ShopItemType
-        {
-            get;
-        }
+        public ShopItemType ShopItemType { get; }
+        public string Description { get; }
 
         public string TypeName
         {

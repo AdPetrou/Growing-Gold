@@ -4,6 +4,7 @@ using UnityEngine;
 using Game.Forms.Plants;
 using Game.Forms.Tools;
 using Game.Forms.UI;
+using Game.Forms.Wallets;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,7 @@ namespace Game
         [SerializeField] private VisualTreeAsset _slotTree;
         [SerializeField] private PanelSettings _panel;
 
+        private Wallet _wallet = null;
         private ToolScriptable _activeTool = null;
         private int _hotbarSlots = 2;
         private Hotbar _hotbar;
@@ -28,6 +30,7 @@ namespace Game
 
         public PlantScriptable TempPlantDefault;
         public int Gold { get; private set; } = 0;
+        public Wallet Wallet { get { return _wallet; } }
 
         // Start is called before the first frame update
         void Start()
@@ -102,6 +105,17 @@ namespace Game
             _hotbar.AddToSlot(_tool);
         }
 
+        public void EquipWallet(WalletScriptable _prefab)
+        {
+            if (_wallet != null)
+            {
+                _wallet.Destroy();
+                _wallet = new Wallet(_prefab, _wallet.GetAmount());
+            }
+            else
+                _wallet = new Wallet(_prefab, 0);       
+        }
+
         private GameObject SpherecastFromMouse()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -111,24 +125,6 @@ namespace Game
                 return null;
 
             return rayOut.transform.gameObject;
-        }
-
-        public int AddGold(int _amount)
-        {
-            Gold += _amount;
-            return Gold;
-        }
-
-        public int RemoveGold(int _amount)
-        {
-            if (_amount > Gold)
-            {
-                Debug.Log("Not Enough Gold");
-                return -1;
-            }
-
-            Gold -= _amount;
-            return Gold;
         }
     }
 }

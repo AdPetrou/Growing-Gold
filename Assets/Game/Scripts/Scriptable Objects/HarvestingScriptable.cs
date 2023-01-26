@@ -6,9 +6,12 @@ using UnityEngine;
 
 namespace Game.Forms.Tools 
 {
-    [CreateAssetMenu(fileName = "Plant Type", menuName = "Scriptables/Tools/Harvesting")]
+    [CreateAssetMenu(fileName = "Harvesting Tool", menuName = "Scriptables/Tools/Harvesting")]
     public class HarvestingScriptable : ToolScriptable, IShopItem
     {
+        [SerializeField][TextArea] protected string _description;
+
+        public string Description => _description;
         public ShopItemType ShopItemType { get { return ShopItemType.Persistant; } }
 
         public override bool UseObject(GameObject _target, float _yOffset)

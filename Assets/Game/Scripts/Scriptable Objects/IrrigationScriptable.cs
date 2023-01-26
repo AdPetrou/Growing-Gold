@@ -7,10 +7,13 @@ using MyBox;
 
 namespace Game.Forms.Tools
 {
-    [CreateAssetMenu(fileName = "Plant Type", menuName = "Scriptables/Tools/Irrigation")]
+    [CreateAssetMenu(fileName = "Irrigation Tool", menuName = "Scriptables/Tools/Irrigation")]
     public class IrrigationScriptable : ToolScriptable, IShopItem
     {
         [SerializeField] protected float _efficieny;
+        [SerializeField][TextArea] protected string _description;
+
+        public string Description => _description;
         public ShopItemType ShopItemType { get { return ShopItemType.Persistant; } }
 
         public override bool UseObject(GameObject _target, float _yOffset)
@@ -41,6 +44,7 @@ namespace Game.Forms.Tools
 
         public void OnButtonPress()
         {
+
             GameManager.Instance.Player.EquipTool(this);
         }
     }

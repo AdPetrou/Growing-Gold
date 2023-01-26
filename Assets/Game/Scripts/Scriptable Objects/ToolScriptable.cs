@@ -7,8 +7,9 @@ using UnityEngine.UIElements;
 
 namespace Game.Forms.Tools
 {
-    public abstract class ToolScriptable : GenericScriptable
+    public abstract class ToolScriptable : FunctionalScriptable
     {
+        [MyBox.Separator][Header("Tool Data")]
         [SerializeField] protected bool _requiresPlantGrown;
         [SerializeField] protected PanelSettings _panel;
         [SerializeField] protected RenderTexture _renderTexture;

@@ -6,8 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace Game.Forms.Plants 
 {
-    [CreateAssetMenu(fileName = "Plant Type", menuName = "Scriptables/Plant")]
-    public class PlantScriptable : GenericScriptable
+    [CreateAssetMenu(fileName = "Plant", menuName = "Scriptables/Plant")]
+    public class PlantScriptable : FunctionalScriptable
     {
         [SerializeField] private int _value;
 
@@ -39,7 +39,7 @@ namespace Game.Forms.Plants
         public void HarvestPlant(GameObject _target, PlayerBehaviour _player)
         {
             AnimancerComponent _animator = _target.GetComponent<AnimancerComponent>();
-            _animator.Stop(_anim); _player.AddGold(_value);
+            _animator.Stop(_anim); _player.Wallet.AddAmount(_value);
             Destroy(_target.GetComponent<Utilities.Blocker>());
         }
     } 

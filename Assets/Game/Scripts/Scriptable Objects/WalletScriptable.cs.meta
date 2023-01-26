@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 526b6f41900e2d049b2101047a7775e1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _sprite: {instanceID: 0}
+  - _xmlWalletUI: {fileID: 9197481963319205126, guid: fb99f1b6b1a54b44ebfb47578563bcab,
+      type: 3}
+  - _panel: {fileID: 11400000, guid: 0a0bf669eaaf1b143a80e79d7695843e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

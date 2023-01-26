@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73afe36231cc19d4f9cefb50d054b91a, type: 3}
   m_Name: Hoe
   m_EditorClassIdentifier: 
+  _name: Hoe
+  _cost: 0
+  _sprite: {fileID: 21300000, guid: 13cecdf48c9fb3f48b736f2c569fe619, type: 3}
   _prefab: {fileID: 699418830768102081, guid: 44d76b2883e07e7499b1166670c4b6eb, type: 3}
   _anim: {fileID: -7703275107319770606, guid: 5c70c7d06b242d74da4cd3b5dee34f1a, type: 3}
-  _name: Hoe
   _time: 2
-  _cost: 200
-  _sprite: {fileID: 21300000, guid: 13cecdf48c9fb3f48b736f2c569fe619, type: 3}
-  _playerRequired: 1
   _requiresPlantGrown: 1
   _panel: {fileID: 11400000, guid: 40fe80cacf68ceb41a76e60fb5c26021, type: 2}
   _renderTexture: {fileID: 8400000, guid: 1d58fbffabe2e6f4db265bc07cff5b84, type: 2}
@@ -26,3 +25,4 @@ MonoBehaviour:
     type: 3}
   _useAnim: {fileID: -550435826235600334, guid: 5c70c7d06b242d74da4cd3b5dee34f1a,
     type: 3}
+  _description: Grandpas hoe. Sadly, this one doesn't make cookies

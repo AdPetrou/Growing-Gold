@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 namespace Game.Forms.UI.Shop
@@ -49,6 +47,7 @@ namespace Game.Forms.UI.Shop
         public void SetRoot(VisualTreeAsset _xmlShopItem,
             List<string> _types, List<GenericScriptable> _items)
         {
+            _items.Reverse();
             _header.text = (_items[0] as IShopItem).TypeName;
 
             var _pageList = _root.Q<ListView>();
