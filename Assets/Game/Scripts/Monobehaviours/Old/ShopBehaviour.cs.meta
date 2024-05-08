@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: dab714c8ba2ddb14e9600577874c7df1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _xmlShopMenu: {fileID: 9197481963319205126, guid: 8d06ba8fb1b685b4c961eb3ff86ebfd5,
+      type: 3}
+  - _xmlShopPage: {fileID: 9197481963319205126, guid: 3997e87dffc1c2d4d829ebe36092627e,
+      type: 3}
+  - _xmlShopItem: {fileID: 9197481963319205126, guid: 01a6ffc71854b644a8ff002b0572b08c,
+      type: 3}
+  - _panel: {fileID: 11400000, guid: 0a0bf669eaaf1b143a80e79d7695843e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

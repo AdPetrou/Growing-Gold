@@ -6,8 +6,8 @@ namespace Game.Forms
 {
     public enum ShopItemType
     {
-        Persistant,
-        NonPersistant,
+        Persistent,
+        NonPersistent,
         Researchable
     }
 }

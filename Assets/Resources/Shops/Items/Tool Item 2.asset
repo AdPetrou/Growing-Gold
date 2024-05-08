@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcff811e42e7d9940a93bca12abe1497, type: 3}
+  m_Name: Tool Item 2
+  m_EditorClassIdentifier: 
+  _name: Item 2
+  _uiTree: {fileID: 9197481963319205126, guid: 2714423e2d3a69d4f9c3730e3d29d44f, type: 3}
+  _description: This is Item 2
+  _cost: 500
+  _costPremium: 10

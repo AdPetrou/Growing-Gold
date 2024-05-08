@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Utilities
 {
     public abstract class Singleton<T> : MonoBehaviour where T : Component
     {
+        public bool BootStrap = true;
         protected static T instance;
         public static T Instance
         {

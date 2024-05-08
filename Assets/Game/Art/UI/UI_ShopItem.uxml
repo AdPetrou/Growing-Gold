@@ -1,12 +1,26 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Root" style="width: 100%; height: 100%; flex-direction: row; align-items: center; justify-content: center; border-top-width: 0; border-bottom-width: 1px; border-left-color: rgba(38, 38, 38, 0.51); border-right-color: rgba(38, 38, 38, 0.51); border-top-color: rgba(38, 38, 38, 0.51); border-bottom-color: rgba(38, 38, 38, 0.51); flex-shrink: 0; min-width: 100%; min-height: 100%; flex-basis: 0;">
-        <ui:VisualElement name="Background" style="height: 70px; width: 70px; position: relative; left: auto; top: auto; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; background-color: rgba(255, 255, 255, 0.5); align-items: center; justify-content: center; flex-shrink: 0; min-width: 70px; min-height: 70px; bottom: auto;">
-            <ui:VisualElement name="Sprite" style="height: 90%; width: 90%; position: absolute; left: auto; top: auto; min-width: 90%; min-height: 90%;" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game/Art/UI/Style%20Sheets/BaseStyle.uss?fileID=7433441132597879392&amp;guid=8d2118bcb8e300249b7eb157d7b0c9d3&amp;type=3#BaseStyle" />
+    <Shadow name="Container-Shadow" shadow-scale="1.01" shadow-corner-radius="15" shadow-offset-y="2" shadow-offset-x="2" style="border-left-color: rgb(91, 90, 90); border-right-color: rgb(91, 90, 90); border-top-color: rgb(91, 90, 90); border-bottom-color: rgb(91, 90, 90); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 7px; border-bottom-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; margin-top: 5px; margin-bottom: 5px; transition-property: display; transition-duration: 0.25s; transition-timing-function: ease-in;">
+        <ui:VisualElement name="Container" class="shop-item" style="flex-direction: row; padding-left: 5px; padding-right: 0; padding-top: 0; padding-bottom: 0; align-items: center; justify-content: flex-start;">
+            <Shadow name="Sprite-Shadow" shadow-scale="1.05" shadow-offset-x="3" shadow-offset-y="3" shadow-corner-radius="7" class="shop-item-sprite" style="margin-right: 10px;">
+                <ui:VisualElement name="Sprite" style="background-image: url(&apos;project://database/Assets/Waldemarst/Broccoli/Catalog/Pipelines/Thumbs/br_forest_alder_01.png?fileID=2800000&amp;guid=526ec330d4f784056937e0f97a73e3b0&amp;type=3#br_forest_alder_01&apos;); flex-grow: 1; flex-shrink: 0; border-top-left-radius: 7px; border-bottom-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; background-color: rgb(38, 36, 36); scale: 1.03 1.03;" />
+            </Shadow>
+            <ui:VisualElement name="Item-Text" style="padding-top: 7px; height: 90%;">
+                <ui:Label text="Item Name" display-tooltip-when-elided="true" name="Item-Name" style="flex-shrink: 1; margin-bottom: 3px;" />
+                <ui:Label text="Description" display-tooltip-when-elided="true" name="Item-Description" class="shop-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Item-Buttons" style="padding-top: 0; height: 90%; justify-content: space-between; align-items: flex-end; flex-shrink: 0; flex-grow: 1; padding-left: 0; padding-right: 10px; padding-bottom: 0;">
+                <Shadow name="Button-Shadow" shadow-scale="1.01" shadow-offset-x="2" shadow-offset-y="2" shadow-corner-radius="4" class="shop-button-shadow">
+                    <ui:Button text="Buy {&quot;PRICE&quot;}" display-tooltip-when-elided="true" name="Purchase" style="background-color: rgb(94, 94, 94);">
+                        <ui:VisualElement name="Button-Sprite" class="shop-button-sprite" style="background-image: url(&apos;project://database/Assets/Game/Art/2D/Sprites/Wallets/Sprite_Wallet.png?fileID=2800000&amp;guid=6bce8bcf531babf49a69d436ff05797c&amp;type=3#Sprite_Wallet&apos;);" />
+                    </ui:Button>
+                </Shadow>
+                <Shadow name="Button-Shadow" shadow-scale="1.01" shadow-offset-x="2" shadow-offset-y="2" shadow-corner-radius="4" class="shop-button-shadow">
+                    <ui:Button text="Buy {&quot;Price&quot;}" display-tooltip-when-elided="true" name="Purchase-Premium" style="background-color: rgb(94, 94, 94);">
+                        <ui:VisualElement name="Button-Sprite" class="shop-button-sprite" style="background-image: url(&apos;project://database/Assets/Waldemarst/Broccoli/Catalog/Pipelines/Thumbs/br_forest_oak_02.png?fileID=2800000&amp;guid=e1ac26b3ed700fe45a940c1ad32f7800&amp;type=3#br_forest_oak_02&apos;);" />
+                    </ui:Button>
+                </Shadow>
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Label text="&quot;ITEM NAME&quot;" display-tooltip-when-elided="true" name="Name" style="position: relative; left: 2%; width: 35%; height: 35%; top: -25px; -unity-font: url(&apos;project://database/Assets/Game/Art/UI/Fonts/Katsia%20Jazwinska%20-%20BetterTogetherCaps.otf?fileID=12800000&amp;guid=731266959c2a2e54aa60eced8cead8ba&amp;type=3#Katsia Jazwinska - BetterTogetherCaps&apos;); -unity-text-align: upper-left; -unity-font-definition: none; font-size: 40%; min-width: 35%; min-height: 35%; color: rgb(255, 255, 255);">
-            <ui:Label text="&quot;Item Description&quot;" display-tooltip-when-elided="true" name="Description" style="top: 100%; width: 134%; height: 146%; font-size: 25%; white-space: normal; flex-shrink: 0; -unity-text-align: middle-left;" />
-        </ui:Label>
-        <ui:Button text="Purchase" display-tooltip-when-elided="true" name="Activate" style="position: relative; left: 15%; top: 35%; width: 25%; -unity-font: url(&apos;project://database/Assets/Game/Art/UI/Fonts/Katsia%20Jazwinska%20-%20BetterTogetherCaps.otf?fileID=12800000&amp;guid=731266959c2a2e54aa60eced8cead8ba&amp;type=3#Katsia Jazwinska - BetterTogetherCaps&apos;); -unity-font-definition: none; font-size: 25%; background-color: rgb(30, 166, 0); min-width: 25%; color: rgb(255, 255, 255); border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px;" />
-        <ui:Label text="$&quot;Value&quot;" display-tooltip-when-elided="true" name="Cost" style="position: relative; left: -5%; top: -25px; -unity-font: url(&apos;project://database/Assets/Game/Art/UI/Fonts/Katsia%20Jazwinska%20-%20BetterTogetherCaps.otf?fileID=12800000&amp;guid=731266959c2a2e54aa60eced8cead8ba&amp;type=3#Katsia Jazwinska - BetterTogetherCaps&apos;); -unity-font-definition: none; font-size: 40%; height: 35%; width: 15%; -unity-text-align: upper-center; min-width: 15%; color: rgb(255, 255, 255);" />
-    </ui:VisualElement>
+    </Shadow>
 </ui:UXML>

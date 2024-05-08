@@ -9,6 +9,7 @@ namespace Game.Forms
     {
         public ShopItemType ShopItemType { get; }
         public string Description { get; }
+        public int Cost { get; }
 
         public string TypeName
         {
@@ -28,6 +29,6 @@ namespace Game.Forms
                 return _typeName;
             }
         }
-        public void OnButtonPress();
+        public void OnShopComplete();
     }
 }

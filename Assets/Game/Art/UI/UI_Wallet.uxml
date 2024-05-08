@@ -1,6 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Root" style="width: 400px; height: 150px; min-width: 400px; min-height: 150px; flex-shrink: 0; align-items: center; justify-content: flex-start; flex-direction: row; transform-origin: right top;">
-        <ui:VisualElement name="Sprite" style="width: 33%; height: 80%; align-items: stretch; justify-content: space-around;" />
-        <ui:Label text="Label" display-tooltip-when-elided="true" name="Amount" style="width: auto; font-size: 80%; -unity-text-align: middle-left; -unity-font: url(&apos;project://database/Assets/Game/Art/UI/Fonts/Katsia%20Jazwinska%20-%20BetterTogetherCaps.otf?fileID=12800000&amp;guid=731266959c2a2e54aa60eced8cead8ba&amp;type=3#Katsia Jazwinska - BetterTogetherCaps&apos;); -unity-font-definition: none; color: rgb(255, 255, 255);" />
-    </ui:VisualElement>
-</ui:UXML>

@@ -39,9 +39,27 @@ namespace Game
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shop"",
+                    ""name"": ""Tool Shop"",
                     ""type"": ""Button"",
                     ""id"": ""0e2337c9-142d-4f69-9ac3-0d492c9ad73b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Research Shop"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4b86c17-a35a-4824-93b0-260668b8af80"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Gold Cheat"",
+                    ""type"": ""Button"",
+                    ""id"": ""74782a64-4f93-42b1-91b2-d66d429e6643"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -78,7 +96,29 @@ namespace Game
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shop"",
+                    ""action"": ""Tool Shop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""376709a2-924c-44fa-8a18-559f84b3459d"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Research Shop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c7bc339-4ea1-4ac3-8812-5333a8ad1d83"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gold Cheat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -90,7 +130,9 @@ namespace Game
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
-            m_Player_Shop = m_Player.FindAction("Shop", throwIfNotFound: true);
+            m_Player_ToolShop = m_Player.FindAction("Tool Shop", throwIfNotFound: true);
+            m_Player_ResearchShop = m_Player.FindAction("Research Shop", throwIfNotFound: true);
+            m_Player_GoldCheat = m_Player.FindAction("Gold Cheat", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -151,13 +193,17 @@ namespace Game
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Use;
-        private readonly InputAction m_Player_Shop;
+        private readonly InputAction m_Player_ToolShop;
+        private readonly InputAction m_Player_ResearchShop;
+        private readonly InputAction m_Player_GoldCheat;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
             public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Use => m_Wrapper.m_Player_Use;
-            public InputAction @Shop => m_Wrapper.m_Player_Shop;
+            public InputAction @ToolShop => m_Wrapper.m_Player_ToolShop;
+            public InputAction @ResearchShop => m_Wrapper.m_Player_ResearchShop;
+            public InputAction @GoldCheat => m_Wrapper.m_Player_GoldCheat;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -170,9 +216,15 @@ namespace Game
                     @Use.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                     @Use.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                     @Use.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
-                    @Shop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShop;
-                    @Shop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShop;
-                    @Shop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShop;
+                    @ToolShop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToolShop;
+                    @ToolShop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToolShop;
+                    @ToolShop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToolShop;
+                    @ResearchShop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnResearchShop;
+                    @ResearchShop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnResearchShop;
+                    @ResearchShop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnResearchShop;
+                    @GoldCheat.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGoldCheat;
+                    @GoldCheat.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGoldCheat;
+                    @GoldCheat.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGoldCheat;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -180,9 +232,15 @@ namespace Game
                     @Use.started += instance.OnUse;
                     @Use.performed += instance.OnUse;
                     @Use.canceled += instance.OnUse;
-                    @Shop.started += instance.OnShop;
-                    @Shop.performed += instance.OnShop;
-                    @Shop.canceled += instance.OnShop;
+                    @ToolShop.started += instance.OnToolShop;
+                    @ToolShop.performed += instance.OnToolShop;
+                    @ToolShop.canceled += instance.OnToolShop;
+                    @ResearchShop.started += instance.OnResearchShop;
+                    @ResearchShop.performed += instance.OnResearchShop;
+                    @ResearchShop.canceled += instance.OnResearchShop;
+                    @GoldCheat.started += instance.OnGoldCheat;
+                    @GoldCheat.performed += instance.OnGoldCheat;
+                    @GoldCheat.canceled += instance.OnGoldCheat;
                 }
             }
         }
@@ -190,7 +248,9 @@ namespace Game
         public interface IPlayerActions
         {
             void OnUse(InputAction.CallbackContext context);
-            void OnShop(InputAction.CallbackContext context);
+            void OnToolShop(InputAction.CallbackContext context);
+            void OnResearchShop(InputAction.CallbackContext context);
+            void OnGoldCheat(InputAction.CallbackContext context);
         }
     }
 }

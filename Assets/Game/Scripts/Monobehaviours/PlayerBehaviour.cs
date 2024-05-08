@@ -7,6 +7,7 @@ using Game.Forms.UI;
 using Game.Forms.Wallets;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using Game.Forms;
 
 namespace Game
 {
@@ -28,9 +29,12 @@ namespace Game
             = new Queue<System.Tuple<ToolScriptable, GameObject>>();
         private bool _toolReady = true;
 
+        public List<IShopItem> PersistentItems { get; } = new List<IShopItem>();
         public PlantScriptable TempPlantDefault;
         public int Gold { get; private set; } = 0;
-        public Wallet Wallet { get { return _wallet; } }
+        public Wallet Wallet { get => _wallet; }
+        public bool ToolReady { get => _toolReady; set => _toolReady = value; }
+        public PanelSettings Panel { get => _panel; }
 
         // Start is called before the first frame update
         void Start()
@@ -52,26 +56,9 @@ namespace Game
             if(_toolReady && _toolQueue.Count > 0)
             {
                 _toolReady = false;
-                StartCoroutine(ToolCoroutine(_toolQueue.Peek(), 
-                    (_returnBool) => 
-                    { 
-                        _toolQueue.Dequeue(); 
-                        _toolReady = _returnBool; 
-                    }));
-            }
-        }
-
-        private IEnumerator ToolCoroutine(System.Tuple<ToolScriptable, GameObject> _tuple,
-            System.Action<bool> _callback)
-        {
-            lock (_toolQueue)
-            {
-                var _tool = _tuple.Item1; var _target = _tuple.Item2;
-                bool _running = _tool.UseObject(_target, 0.5f);
-                if (_running)
-                    yield return new WaitForSeconds(_tool.GetTime());
-
-                _callback(true);
+                var _tuple = _toolQueue.Dequeue();
+                if (!_tuple.Item1.UseObject(_tuple.Item2, 0.5f))
+                    _toolReady = true;
             }
         }
 
@@ -92,8 +79,15 @@ namespace Game
             }
         }
 
-        public void SetActiveTool(ToolScriptable _tool) { _activeTool = _tool; }
-        public void RemoveActiveTool() { _activeTool = null; }
+        public void SetActiveTool(ToolScriptable _tool) =>  _activeTool = _tool;
+        public void RemoveActiveTool() => _activeTool = null;
+
+        /// <summary>
+        /// Delete this before release.
+        /// Dont use this, this is only for the input system.
+        /// </summary>
+        /// <param name="_amount"></param>
+        public void AddMoney(int _amount) => _wallet.AddAmount(_amount);
 
         public void EquipTool(ToolScriptable _tool)
         {
@@ -107,13 +101,18 @@ namespace Game
 
         public void EquipWallet(WalletScriptable _prefab)
         {
-            if (_wallet != null)
+            if (_wallet == null)
+                _wallet = new Wallet(_prefab, 0);
+            else if (_wallet.GetWalletType() == _prefab)
+                return;
+            else
             {
                 _wallet.Destroy();
-                _wallet = new Wallet(_prefab, _wallet.GetAmount());
-            }
-            else
-                _wallet = new Wallet(_prefab, 0);       
+                if(_wallet.GetAmount() > _prefab.MaxAmount)
+                    _wallet = new Wallet(_prefab, _prefab.MaxAmount);
+                else
+                    _wallet = new Wallet(_prefab, _wallet.GetAmount());
+            }      
         }
 
         private GameObject SpherecastFromMouse()

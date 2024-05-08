@@ -15,9 +15,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shop",
+                    "name": "Tool Shop",
                     "type": "Button",
                     "id": "0e2337c9-142d-4f69-9ac3-0d492c9ad73b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Research Shop",
+                    "type": "Button",
+                    "id": "c4b86c17-a35a-4824-93b0-260668b8af80",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Gold Cheat",
+                    "type": "Button",
+                    "id": "74782a64-4f93-42b1-91b2-d66d429e6643",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -54,7 +72,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shop",
+                    "action": "Tool Shop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "376709a2-924c-44fa-8a18-559f84b3459d",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Research Shop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c7bc339-4ea1-4ac3-8812-5333a8ad1d83",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gold Cheat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

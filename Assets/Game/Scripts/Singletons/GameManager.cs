@@ -20,6 +20,8 @@ namespace Game
         }
         private PlayerBehaviour _player;
 
+        //public Vector2 ScreenBaseScale { get => new Vector2(1200, 800); }
+
         // Start is called before the first frame update
         void Start()
         {

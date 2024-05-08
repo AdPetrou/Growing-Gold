@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game/Art/UI/Style%20Sheets/BaseStyle.uss?fileID=7433441132597879392&amp;guid=8d2118bcb8e300249b7eb157d7b0c9d3&amp;type=3#BaseStyle" />
+    <ui:VisualElement name="Container" class="shop-root">
+        <Shadow name="DropShadow" shadow-corner-radius="50" shadow-offset-y="-10" shadow-scale="1.1" style="position: relative; top: auto; width: auto; bottom: auto; height: 5%; overflow: visible; background-color: rgb(34, 30, 30); border-bottom-width: 3px; border-left-color: rgb(106, 106, 106); border-right-color: rgb(106, 106, 106); border-top-color: rgb(106, 106, 106); border-bottom-color: rgb(106, 106, 106);">
+            <ui:VisualElement name="Pages" style="height: 100%; justify-content: space-between; flex-direction: row; background-color: rgb(46, 43, 43);" />
+        </Shadow>
+        <Shadow name="DropShadow" shadow-corner-radius="50" shadow-offset-y="-10" style="position: relative; top: auto; width: auto; bottom: auto; height: 8%; overflow: visible; border-bottom-width: 3px; border-left-color: rgb(106, 106, 106); border-right-color: rgb(106, 106, 106); border-top-color: rgb(106, 106, 106); border-bottom-color: rgb(106, 106, 106);">
+            <ui:VisualElement name="Header" style="justify-content: space-between; flex-direction: row; align-items: center; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; height: 100%; background-color: rgb(46, 43, 43);">
+                <LabelAutoFit name="Wallet-Title" ratio-axis="Vertical" text="1000" ratio="0.75" class="shop-title" style="-unity-text-align: middle-right;">
+                    <GallantGames.UI.AspectRatioPanel name="Sprite" aspect-ratio-x="3" aspect-ratio-y="3" balance-x="5" balance-y="0" class="shop-title-sprite" style="background-image: url(&apos;project://database/Assets/Game/Art/2D/Sprites/Wallets/Sprite_Wallet.png?fileID=2800000&amp;guid=6bce8bcf531babf49a69d436ff05797c&amp;type=3#Sprite_Wallet&apos;);" />
+                </LabelAutoFit>
+                <LabelAutoFit name="Shop-Title" ratio-axis="Vertical" text="SHOP" ratio="1" class="shop-title" style="width: 25%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
+                <LabelAutoFit name="Premium-Title" ratio-axis="Vertical" text="5" ratio="0.75" class="shop-title" style="-unity-text-align: middle-right;">
+                    <GallantGames.UI.AspectRatioPanel name="Sprite" aspect-ratio-x="3" aspect-ratio-y="3" balance-x="5" balance-y="0" class="shop-title-sprite" style="background-image: url(&apos;project://database/Assets/Waldemarst/Broccoli/Catalog/Pipelines/Thumbs/br_forest_oak_02.png?fileID=2800000&amp;guid=e1ac26b3ed700fe45a940c1ad32f7800&amp;type=3#br_forest_oak_02&apos;);" />
+                </LabelAutoFit>
+            </ui:VisualElement>
+        </Shadow>
+    </ui:VisualElement>
+</ui:UXML>
